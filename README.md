@@ -1,7 +1,7 @@
 # Hi there, I'm Jaime Muñoz 👋
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Jaime%20Mu%C3%B1oz-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/jaime-mu%C3%B1oz-0780032b4/)
-[![Portfolio](https://img.shields.io/badge/Notion-Portfolio-000000?style=for-the-badge&logo=notion)](https://app.notion.so/p/Jaime-Mu-oz-S-nchez-13edfd61a87280e3bb64c6231fe66f37)
+[![Portfolio]([https://img.shields.io/badge/Notion-Portfolio-000000?style=for-the-badge&logo=notion)](https://app.notion.so/p/Jaime-Mu-oz-S-nchez-13edfd61a87280e3bb64c6231fe66f37](https://app.notion.com/p/Jaime-Mu-oz-S-nchez-13edfd61a87280e3bb64c6231fe66f37))
 [![Email](https://img.shields.io/badge/Email-jaimemunz03%40gmail.com-D14836?style=for-the-badge&logo=gmail)](mailto:jaimemunz03@gmail.com)
 
 **Junior Cloud & DevOps Engineer** | **Técnico Superior en ASIR**  
