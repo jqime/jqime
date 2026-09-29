@@ -6,7 +6,7 @@
 
 [![Email](https://img.shields.io/badge/Email-jaimemunz03%40gmail.com-D14836?style=for-the-badge\&logo=gmail)](mailto:jaimemunz03@gmail.com)
 
-**Junior Cloud & DevOps Engineer** | **Técnico Superior en ASIR**
+**Junior Cloud & DevOps Engineer** | **Técnico Superior en Administración de Sistemas Informáticos en Red**
 📍 Madrid, España · 
 🎓 Becado por la Fundación Alfonso Martín Escudero en **Tajamar** — *Máster de Ingeniería MultiCloud & DevOps*
 
