@@ -59,21 +59,21 @@ flowchart TB
 - **Ollama:** Flask comprueba su salud en `127.0.0.1:11434`; el RAG de Cowrie usa Ollama y `sqlite-vec` desde una CLI y entorno virtual separados. El endpoint `/v1/chat/completions` ejecuta `sec-agent` para generar un informe de seguridad, no un chat LLM de propósito general.
 - **Tecnologías:** Python, Flask, Gunicorn, Nginx, SQLite, Ollama, Cowrie y Tailscale. Docker Compose se limita a QA/simulación.
 
-El honeypot escucha en `:2223`, pero el firewall solo permite tráfico desde Tailscale; no se expone a Internet por defecto. Consulta el [repositorio](https://github.com/jqime/edge-sec-agent) para ver el código y la documentación.
+El honeypot escucha en `:2223`, pero el firewall solo permite tráfico desde Tailscale; no se expone a Internet por defecto.
 
 ---
 
 ## 🧰 Tecnologías
 
-**Cloud · DevOps · Automatización**
+**Cloud · DevOps**
 
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-k3s-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
 ![Ansible](https://img.shields.io/badge/Ansible-AWX-EE0000?style=flat-square&logo=ansible&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 
 - **Cloud** — **Profesional:** Kubernetes (k3s), Traefik Ingress. **Proyecto personal:** Edge sobre Orange Pi Zero 3 / ARM64. **En formación:** AWS y Microsoft Azure.
-- **DevOps** — **Profesional:** automatización de infraestructura con Ansible y AWX. **Proyecto personal:** GitHub Actions; Docker Compose solo para QA/simulación. **En formación:** preparación de GH-200.
-- **Automatización** — **Profesional:** Ansible, AWX e infraestructura como código. **Proyecto personal:** Python, Bash y Makefile.
+- **DevOps** — **Profesional:** Ansible y AWX para automatización de infraestructura. **Proyecto personal:** GitHub Actions para CI; Docker Compose solo para QA/simulación. **En formación:** GH-200.
+- **Automatización** — **Profesional:** infraestructura como código. **Proyecto personal:** Python, Bash y Makefile.
 
 **Sistemas · Ciberseguridad**
 
@@ -81,7 +81,7 @@ El honeypot escucha en `:2223`, pero el firewall solo permite tráfico desde Tai
 ![Suricata](https://img.shields.io/badge/Suricata-IDS%2FIPS-1F4E79?style=flat-square)
 
 - **Sistemas** — **Profesional:** Linux y Debian 13. **Proyecto personal:** DietPi sobre ARM64, systemd y SQLite/WAL.
-- **Ciberseguridad** — **Profesional:** OPNsense, Suricata IPS, UFW, Fail2Ban y Auditd. **Proyecto personal:** Nginx, TLS 1.2/1.3, Cowrie y Tailscale; Kali Linux, Nmap, Wireshark y otras herramientas en laboratorio.
+- **Ciberseguridad** — **Profesional:** OPNsense, Suricata IPS, UFW, Fail2Ban y Auditd. **Proyecto personal:** Nginx, TLS 1.2/1.3, Cowrie y Tailscale. **Laboratorio:** Kali Linux, Nmap, Wireshark y otras herramientas.
 
 ---
 
@@ -99,22 +99,19 @@ El honeypot escucha en `:2223`, pero el firewall solo permite tráfico desde Tai
 
 ---
 
-## 🎓 Formación & certificaciones
+## 🎓 Formación y certificaciones
 
-### Formación
-
-- **Máster de Ingeniería MultiCloud & DevOps** · Tajamar · Septiembre 2026 – Presente
-  Beca de la Fundación Alfonso Martín Escudero.
+- **Máster de Ingeniería MultiCloud & DevOps** · Tajamar · Septiembre 2026 – Presente · Beca de la Fundación Alfonso Martín Escudero.
 - **Técnico Superior en Administración de Sistemas Informáticos en Red (ASIR)** · DigitechFP · 2024–2026.
 - **Bachillerato** · IES Jaime Ferrán · 2024.
 
-### Certificaciones obtenidas
+**Certificaciones obtenidas**
 
 - **IBM:** Cybersecurity Professional Certificate; Incident Response and Systems Forensics.
 - **Google:** Google Cybersecurity Professional Certificate; IA & Productividad.
 - **Cisco:** Introduction to Cybersecurity.
 
-### En preparación
+**En preparación**
 
 - **Microsoft Azure:** AZ-104 / AZ-500.
 - **AWS:** Solutions Architect Associate (SAA-C03).
