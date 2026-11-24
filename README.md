@@ -22,6 +22,47 @@ Mi experiencia combina automatización de infraestructura, bastionado de sistema
 
 ---
 
+## 🌟 Proyecto destacado
+
+<div align="center">
+
+### 🛡️ [Edge Security Agent](https://github.com/jqime/edge-sec-agent)
+
+**Appliance de seguridad self-hosted · Orange Pi Zero 3 · ARM64 · DietPi**
+
+</div>
+
+Edge Security Agent reúne hardening perimetral, observabilidad, telemetría de honeypot y recuperación en un nodo de bajos recursos. La API y sus datos operativos se ejecutan localmente; Tailscale permite el acceso remoto por la tailnet.
+
+**Arquitectura**
+
+```mermaid
+flowchart TB
+    client["Cliente"] -->|"HTTPS :8443"| nginx["Nginx · TLS · Basic Auth"]
+    nginx -->|"proxy a 127.0.0.1:5000"| api["Gunicorn + Flask"]
+    api -->|"genera informe"| agent["sec-agent CLI"]
+    api -->|"health e histórico"| db[("SQLite · WAL")]
+    api -->|"lee en GET /api/honeypot/summary"| log["cowrie.json"]
+    agent -->|"persiste métricas"| db
+    api -->|"health check · 127.0.0.1:11434"| ollama["Ollama"]
+    tailnet["Tailscale · interfaz restringida"] -->|"SSH :2222"| dropbear["Dropbear"]
+    tailnet -->|"SSH :2223"| cowrie["Cowrie honeypot"]
+    cowrie -->|"escribe eventos"| log
+    rag["CLI RAG · entorno aislado"] -->|"lee"| log
+    rag -->|"embeddings / consulta"| ollama
+    rag --> vectors[("sqlite-vec · cowrie_vec.db")]
+```
+
+- **Perímetro:** Nginx en `:8443` termina TLS 1.2/1.3, exige Basic Auth y aplica rate limiting. Gunicorn escucha solo en `127.0.0.1:5000`.
+- **Acceso y honeypot:** el firewall limita Dropbear `:2222` y Cowrie `:2223` a la interfaz Tailscale. Flask agrega eventos de Cowrie sin exponer contraseñas ni comandos.
+- **Datos y operación:** SQLite/WAL conserva métricas; systemd ejecuta watchdog y copias horarias. Las actualizaciones automáticas son opt-in.
+- **Ollama:** Flask comprueba su salud en `127.0.0.1:11434`; el RAG de Cowrie usa Ollama y `sqlite-vec` desde una CLI y entorno virtual separados. El endpoint `/v1/chat/completions` ejecuta `sec-agent` para generar un informe de seguridad, no un chat LLM de propósito general.
+- **Tecnologías:** Python, Flask, Gunicorn, Nginx, SQLite, Ollama, Cowrie y Tailscale. Docker Compose se limita a QA/simulación.
+
+El honeypot escucha en `:2223`, pero el firewall solo permite tráfico desde Tailscale; no se expone a Internet por defecto. Consulta el [repositorio](https://github.com/jqime/edge-sec-agent) para ver el código y la documentación.
+
+---
+
 ## 🧰 Tecnologías
 
 **Cloud · DevOps · Automatización**
@@ -41,36 +82,6 @@ Mi experiencia combina automatización de infraestructura, bastionado de sistema
 
 - **Sistemas** — **Profesional:** Linux y Debian 13. **Proyecto personal:** DietPi sobre ARM64, systemd y SQLite/WAL.
 - **Ciberseguridad** — **Profesional:** OPNsense, Suricata IPS, UFW, Fail2Ban y Auditd. **Proyecto personal:** Nginx, TLS 1.2/1.3, Cowrie y Tailscale; Kali Linux, Nmap, Wireshark y otras herramientas en laboratorio.
-
----
-
-## 🌟 Proyecto destacado
-
-### 🛡️ [Edge Security Agent](https://github.com/jqime/edge-sec-agent)
-
-**Appliance de seguridad self-hosted para Orange Pi Zero 3 · ARM64 · DietPi**
-
-Edge Security Agent reúne hardening perimetral, observabilidad, telemetría de honeypot, informes con IA local y tareas de recuperación en un nodo de bajos recursos. La administración y la inferencia local no dependen de un servicio cloud.
-
-**Arquitectura**
-
-```mermaid
-flowchart TB
-    client["Cliente / operador"] -->|"HTTPS :8443"| proxy["Nginx · TLS · Basic Auth · rate limit"]
-    proxy -->|"loopback :5000"| api["Gunicorn + Flask API"]
-    api --> db[("SQLite / WAL")]
-    api -->|"inferencia local"| ollama["Ollama · loopback :11434"]
-    tailnet["Tailscale"] --> admin["Administración · Dropbear :2222"]
-    tailnet --> cowrie["Cowrie honeypot · :2223"]
-    cowrie -->|"eventos agregados"| api
-```
-
-- **Perímetro:** Nginx con TLS 1.2/1.3, autenticación, limitación de peticiones y cabeceras de seguridad; reglas de firewall persistentes y Fail2Ban.
-- **API y observabilidad:** Flask detrás de Gunicorn, endpoints de salud y métricas Prometheus, y persistencia SQLite/WAL.
-- **Operación:** Ollama local, copias de seguridad y restauración, watchdog y actualizaciones seguras opcionales.
-- **Tecnologías:** Python, Flask, Gunicorn, Nginx, SQLite, Ollama, Cowrie y Tailscale. Docker Compose está limitado al entorno de QA/simulación.
-
-El honeypot no se expone a Internet por defecto. Consulta el [repositorio](https://github.com/jqime/edge-sec-agent) para ver el código, la documentación y el estado del proyecto.
 
 ---
 
