@@ -69,14 +69,15 @@ El honeypot escucha en `:2223`, pero el firewall solo permite tráfico desde Tai
 **Cloud y plataformas**
 
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-k3s-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
-![Ansible](https://img.shields.io/badge/Ansible-AWX-EE0000?style=flat-square&logo=ansible&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 
 - **Profesional:** Kubernetes (k3s), Traefik Ingress.
 - **Proyecto personal:** Orange Pi Zero 3 / ARM64.
 - **En formación:** AWS y Microsoft Azure.
 
 **DevOps y automatización**
+
+![Ansible](https://img.shields.io/badge/Ansible-AWX-EE0000?style=flat-square&logo=ansible&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 
 - **Profesional:** Ansible, AWX e infraestructura como código.
 - **Proyecto personal:** GitHub Actions para CI; Docker Compose solo en QA/simulación.
