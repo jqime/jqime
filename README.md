@@ -4,6 +4,8 @@
 
 ### Cloud & DevOps Engineer · Madrid, España
 
+ASIR · Máster de Ingeniería MultiCloud & DevOps en Tajamar · Becado por la Fundación Alfonso Martín Escudero
+
 **Infraestructura, automatización y seguridad para entornos Cloud y Edge.**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Perfil-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/jaime-mu%C3%B1oz-0780032b4/)
@@ -16,9 +18,9 @@
 
 ## 👋 Sobre mí
 
-Soy **Técnico Superior en Administración de Sistemas Informáticos en Red (ASIR)** y curso el **Máster de Ingeniería MultiCloud & DevOps en Tajamar**, becado por la Fundación Alfonso Martín Escudero. Entre marzo y mayo de 2026 trabajé como **Técnico de SecOps e Infraestructura en CDS, an HPE Company**.
+Mi base es la administración de sistemas y redes. Trabajé como **Técnico de SecOps e Infraestructura en CDS, an HPE Company**, donde realicé tareas de automatización, bastionado y seguridad perimetral.
 
-Mi experiencia combina automatización de infraestructura, bastionado de sistemas y seguridad perimetral. Ahora estoy ampliando esa base hacia **Cloud, DevOps y Edge Computing**, con interés en construir entornos seguros y operables.
+Me interesa construir y operar infraestructura **Cloud y Edge** con Linux, automatización, seguridad y observabilidad. Mi experiencia incluye monitorización de Kubernetes y trabajo en entornos distribuidos de telemetría con conectividad 5G.
 
 ---
 
@@ -32,7 +34,7 @@ Mi experiencia combina automatización de infraestructura, bastionado de sistema
 
 </div>
 
-Edge Security Agent reúne hardening perimetral, observabilidad, telemetría de honeypot y recuperación en un nodo de bajos recursos. La API y sus datos operativos se ejecutan localmente; Tailscale permite el acceso remoto por la tailnet.
+Edge Security Agent es un appliance self-hosted para un nodo ARM64 de bajos recursos. Reúne hardening perimetral, monitorización y telemetría de honeypot, manteniendo la API y los datos operativos en el dispositivo.
 
 **Arquitectura**
 
@@ -53,11 +55,10 @@ flowchart TB
     rag --> vectors[("sqlite-vec · cowrie_vec.db")]
 ```
 
-- **Perímetro:** Nginx en `:8443` termina TLS 1.2/1.3, exige Basic Auth y aplica rate limiting. Gunicorn escucha solo en `127.0.0.1:5000`.
-- **Acceso y honeypot:** el firewall limita Dropbear `:2222` y Cowrie `:2223` a la interfaz Tailscale. Flask agrega eventos de Cowrie sin exponer contraseñas ni comandos.
-- **Datos y operación:** SQLite/WAL conserva métricas; systemd ejecuta watchdog y copias horarias. Las actualizaciones automáticas son opt-in.
-- **Ollama:** Flask comprueba su salud en `127.0.0.1:11434`; el RAG de Cowrie usa Ollama y `sqlite-vec` desde una CLI y entorno virtual separados. El endpoint `/v1/chat/completions` ejecuta `sec-agent` para generar un informe de seguridad, no un chat LLM de propósito general.
-- **Tecnologías:** Python, Flask, Gunicorn, Nginx, SQLite, Ollama, Cowrie y Tailscale. Docker Compose se limita a QA/simulación.
+- **Perímetro y acceso:** Nginx en `:8443` aplica TLS 1.2/1.3, Basic Auth y rate limiting. El firewall restringe Dropbear `:2222` y Cowrie `:2223` a la interfaz Tailscale; Gunicorn solo escucha en `127.0.0.1:5000`.
+- **API y observabilidad:** Flask ofrece health checks y métricas Prometheus; SQLite/WAL conserva las métricas. El endpoint de resumen de Cowrie lee sus eventos JSON sin exponer credenciales ni comandos.
+- **Análisis local:** Ollama escucha en `127.0.0.1:11434`. Flask comprueba su disponibilidad; `/v1/chat/completions` ejecuta `sec-agent` para generar un informe, no un chat LLM general. El RAG de Cowrie es una CLI separada que usa Ollama y `sqlite-vec`.
+- **Automatización y ARM64:** systemd ejecuta el watchdog y las copias horarias; las actualizaciones seguras son opt-in. El proyecto está dirigido a Orange Pi Zero 3 / ARM64 con DietPi; el bootstrap documenta Debian 13 ARM64 y compatibilidad con DietPi. Docker Compose es solo para QA/simulación.
 
 El honeypot escucha en `:2223`, pero el firewall solo permite tráfico desde Tailscale; no se expone a Internet por defecto.
 
@@ -65,23 +66,41 @@ El honeypot escucha en `:2223`, pero el firewall solo permite tráfico desde Tai
 
 ## 🧰 Tecnologías
 
-**Cloud · DevOps**
+**Cloud y plataformas**
 
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-k3s-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
 ![Ansible](https://img.shields.io/badge/Ansible-AWX-EE0000?style=flat-square&logo=ansible&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 
-- **Cloud** — **Profesional:** Kubernetes (k3s), Traefik Ingress. **Proyecto personal:** Edge sobre Orange Pi Zero 3 / ARM64. **En formación:** AWS y Microsoft Azure.
-- **DevOps** — **Profesional:** Ansible y AWX para automatización de infraestructura. **Proyecto personal:** GitHub Actions para CI; Docker Compose solo para QA/simulación. **En formación:** GH-200.
-- **Automatización** — **Profesional:** infraestructura como código. **Proyecto personal:** Python, Bash y Makefile.
+- **Profesional:** Kubernetes (k3s), Traefik Ingress.
+- **Proyecto personal:** Orange Pi Zero 3 / ARM64.
+- **En formación:** AWS y Microsoft Azure.
 
-**Sistemas · Ciberseguridad**
+**DevOps y automatización**
+
+- **Profesional:** Ansible, AWX e infraestructura como código.
+- **Proyecto personal:** GitHub Actions para CI; Docker Compose solo en QA/simulación.
+- **En preparación:** certificación GitHub Actions GH-200.
+
+**Sistemas y redes**
 
 ![Debian](https://img.shields.io/badge/Debian-13-A81D33?style=flat-square&logo=debian&logoColor=white)
+
+- **Profesional:** Linux y Debian 13.
+- **Proyecto personal:** DietPi, systemd y Tailscale sobre ARM64.
+- **Otros entornos y redes:** Ubuntu y WireGuard.
+
+**Seguridad y observabilidad**
+
 ![Suricata](https://img.shields.io/badge/Suricata-IDS%2FIPS-1F4E79?style=flat-square)
 
-- **Sistemas** — **Profesional:** Linux y Debian 13. **Proyecto personal:** DietPi sobre ARM64, systemd y SQLite/WAL.
-- **Ciberseguridad** — **Profesional:** OPNsense, Suricata IPS, UFW, Fail2Ban y Auditd. **Proyecto personal:** Nginx, TLS 1.2/1.3, Cowrie y Tailscale. **Laboratorio:** Kali Linux, Nmap, Wireshark y otras herramientas.
+- **Profesional:** OPNsense, Suricata IPS, UFW, Fail2Ban y Auditd.
+- **Proyecto personal:** Nginx, TLS 1.2/1.3, Cowrie, métricas Prometheus y SQLite/WAL.
+- **Laboratorio:** Kali Linux, Nmap, Hping3, Tcpdump, Wireshark, Netcat, Hack The Box y Elastic Stack.
+
+**Programación y scripting**
+
+- **Proyecto personal:** Python, Bash y Makefile.
 
 ---
 
