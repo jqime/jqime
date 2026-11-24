@@ -35,8 +35,8 @@ Trabajo en **SecOps e infraestructura**, con experiencia en automatización, seg
 ![Docker](https://img.shields.io/badge/Docker_%26_Compose-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 ![Traefik](https://img.shields.io/badge/Traefik_Ingress-24A1C1?style=flat-square&logo=traefikproxy&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS--formacion-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
-![Azure](https://img.shields.io/badge/Azure--formacion-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-formacion-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
+![Azure](https://img.shields.io/badge/Azure-formacion-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)
 
 **Automatización & scripting**
 
